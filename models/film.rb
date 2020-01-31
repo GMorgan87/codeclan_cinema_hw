@@ -24,8 +24,13 @@ end
 
 def self.all
   sql = "SELECT * FROM films"
-  results = SqlRunner.run(sql, values)
+  results = SqlRunner.run(sql)
+  return results.map {|film| Film.new(film)}
+end
 
+def self.delete_all
+  sql = "DELETE FROM films"
+  SqlRunner.run(sql)
 end
 
 end

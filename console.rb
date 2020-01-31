@@ -3,6 +3,8 @@ require_relative('models/customer')
 require_relative('models/film')
 require_relative('models/ticket')
 
+Film.delete_all()
+
 film1 = Film.new({'title' => '1917', 'price' => 10})
 film1.save
 film2 = Film.new({'title' => 'Knives Out', 'price' => 5})
