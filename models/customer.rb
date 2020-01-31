@@ -44,6 +44,17 @@ class Customer
     return results.map {|film_data| Film.new(film_data)}
   end
 
+  def ticket_count
+    return films.count
+  end
+
+  def buy_ticket(film)
+    @funds -= film.price
+    update()
+    transaction = {'customer_id' => @id, 'film_id' => film.id}
+    Ticket.new(transaction).save()
+  end
+
   def self.all
     sql = "SELECT * FROM customers"
     results = SqlRunner.run(sql)

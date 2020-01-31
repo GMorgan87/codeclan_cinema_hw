@@ -44,6 +44,10 @@ def viewers
   return results.map {|customer_data| Customer.new(customer_data)}
 end
 
+def viewer_count
+  return viewers.count
+end
+
 def self.all
   sql = "SELECT * FROM films"
   results = SqlRunner.run(sql)
